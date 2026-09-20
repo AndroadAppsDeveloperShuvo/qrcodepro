@@ -14,9 +14,13 @@ import { Wand2, Download, Link as LinkIcon } from 'lucide-react';
 export default function App() {
   // Theme & Dark mode (defaults to clean light mode unless explicitly set to 'dark')
   const [isDark, setIsDark] = useState<boolean>(() => {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') return true;
-    if (saved === 'light') return false;
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') return true;
+      if (saved === 'light') return false;
+    } catch {
+      // ignore
+    }
     return false;
   });
 
@@ -53,13 +57,13 @@ export default function App() {
 
   // Saved Profiles / Links (matching screenshot)
   const [savedLinks, setSavedLinks] = useState<SavedLinkItem[]>(() => {
-    const cached = localStorage.getItem('saved_qr_links');
-    if (cached) {
-      try {
+    try {
+      const cached = localStorage.getItem('saved_qr_links');
+      if (cached) {
         return JSON.parse(cached);
-      } catch {
-        // fallback
       }
+    } catch {
+      // fallback
     }
     return [
       { id: '1', name: 'Google', url: 'https://google.com' },
@@ -71,7 +75,11 @@ export default function App() {
 
   // Save to localStorage
   useEffect(() => {
-    localStorage.setItem('saved_qr_links', JSON.stringify(savedLinks));
+    try {
+      localStorage.setItem('saved_qr_links', JSON.stringify(savedLinks));
+    } catch {
+      // ignore
+    }
   }, [savedLinks]);
 
   // Toasts
@@ -97,13 +105,21 @@ export default function App() {
       root.classList.remove('light');
       root.setAttribute('data-theme', 'dark');
       root.style.colorScheme = 'dark';
-      localStorage.setItem('theme', 'dark');
+      try {
+        localStorage.setItem('theme', 'dark');
+      } catch {
+        // ignore
+      }
     } else {
       root.classList.remove('dark');
       root.classList.add('light');
       root.setAttribute('data-theme', 'light');
       root.style.colorScheme = 'light';
-      localStorage.setItem('theme', 'light');
+      try {
+        localStorage.setItem('theme', 'light');
+      } catch {
+        // ignore
+      }
     }
   }, [isDark]);
 
