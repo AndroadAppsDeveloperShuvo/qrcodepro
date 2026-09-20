@@ -69,7 +69,7 @@ export default function App() {
       { id: '1', name: 'Google', url: 'https://google.com' },
       { id: '2', name: 'Facebook', url: 'https://facebook.com' },
       { id: '3', name: 'YouTube', url: 'https://youtube.com' },
-      { id: '4', name: 'Shuvo', url: 'https://androadappsdevelopershuvo.github.io' }
+      { id: '4', name: 'Shuvo', url: 'https://androadappsdevelopershuvo.github.io/biodata.com' }
     ];
   });
 
@@ -486,7 +486,7 @@ export default function App() {
         <footer className="mt-7 pt-2 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
           This Site Developed By{' '}
           <a
-            href="https://androadappsdevelopershuvo.github.io"
+            href="https://androadappsdevelopershuvo.github.io/biodata.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 dark:text-blue-400 font-bold hover:underline"
@@ -497,4 +497,4 @@ export default function App() {
       </main>
     </div>
   );
-}
+          }
