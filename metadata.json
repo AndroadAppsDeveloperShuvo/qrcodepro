@@ -1,0 +1,6 @@
+{
+  "name": "Professional QR Code Generator Pro",
+  "description": "Generate professional QR codes with custom color palettes, gallery photo logos, default standard mode, and HD download.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
